@@ -5,6 +5,10 @@ process clair_calls {
   tag "{$bam.simpleName}_chr${ctg}"
   label 'high_memory'
   conda '/exports/igmm/eddie/tomlinson-CRC-promethion/analysis/clair/clair-env'
+  cpus 8
+  executor 'sge'
+  memory { 1.GB * task.attempt }
+  errorStrategy 'retry'
   cpus 8 
 
   input:
